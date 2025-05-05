@@ -1,14 +1,14 @@
 // models/user.js
 const users = [
     {
-      id: "1",
+      id: "admin",
       username: "admin",
       password: "2025DEVChallenge",
       role: "admin",
       tenant: "global",
     },
     {
-      id: "2",
+      id: "newuser",
       username: "newuser",
       password: "2025DEVChallenge",
       role: "user",
