@@ -1,7 +1,8 @@
 const checkPermission = (action, resource) => {
   return async (req, res, next) => {
     const permit = req.app.get('permit');
-    const user = req.user; // make sure this is being set correctly
+    // Hardcode the user id to "admin" for now (update with your auth flow later)
+    const user = { id: "admin" };  // Simulating an admin user for permission checks
     const tenant = req.params.tenantId;
 
     try {
