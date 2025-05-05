@@ -1,9 +1,12 @@
 const checkPermission = (action, resource) => {
   return async (req, res, next) => {
     const permit = req.app.get('permit');
-    // Hardcode the user id to "admin" for now (update with your auth flow later)
-    const user = { id: "admin" };  // Simulating an admin user for permission checks
+    const user = req.user; // This should now come from JWT
     const tenant = req.params.tenantId;
+
+    if (!user || !user.id) {
+      return res.status(401).json({ error: "User not authenticated" });
+    }
 
     try {
       const allowed = await permit.check(user.id, action, resource, {
